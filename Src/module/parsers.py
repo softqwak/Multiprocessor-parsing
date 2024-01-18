@@ -13,14 +13,7 @@ class Parser:
         self.PATH_OPTIONS_PARSERS = '../data/options_parsers.json'
         self.parsers = self.load(self.PATH_OPTIONS_PARSERS)        
 
-        self.ioloop = asyncio.get_event_loop()
-        self.ioloop.run_until_complete(self.start(self.ioloop))
-        self.ioloop.close()
-
-        asyncio.run(
-            self.start(parsers=self.parsers)
-        )
-        
+    
 
     def load(self, path):
         with open(path, 'r') as file:
@@ -28,6 +21,7 @@ class Parser:
         
     
     def now_str(self): return f"[{datetime.now()}]"
+    def now(self): return datetime.now()
     
 
    

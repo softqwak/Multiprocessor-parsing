@@ -5,6 +5,7 @@ from codes import *
 from threading import Thread
 from parsers import Parser
 import json
+from copy import deepcopy
 
 class Server(Parser):
 
@@ -27,14 +28,14 @@ class Server(Parser):
                 self.client, self.addr_client = self.server.accept()
                 print('client connect')
                 self.send_report(socket=self.client, code=SUCC_CONNECT)
-                self.get_request(socket=self.socket)
+                self.get_request(socket=self.client)
                 Thread(
                     target=self.keeping_connect, 
-                    args=(self.client,),
+                    args=(deepcopy(self.client),),
                     daemon=True
                 ).start()
             except Exception as e:
-                print(str(e))            
+                print(f'38 - {str(e)}')            
         self.server.close()
     
     def now(self): return f'[{datetime.now()}]'
@@ -58,7 +59,7 @@ class Server(Parser):
         self.request = json.loads(socket.recv(1024).decode(CODE))
         
     def keeping_connect(self, socket):
-
+        print('Поток номер какой-то там создан')
         def parsing() -> dict:
             parser = Parser()
             reports = parser.start()
