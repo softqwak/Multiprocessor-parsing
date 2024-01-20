@@ -16,6 +16,8 @@ class Bot(Client):
     def save(self, obj, path):
         with open(path, 'w') as file:
             json.dump(obj, file)
+
+    
     
     def now(self): return f'[{datetime.now()}]'
     
