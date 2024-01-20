@@ -1,24 +1,16 @@
 {
     "qwak": {
         "bases": {
-            "nevsky": {
-                "tg": {},
-                "vk": {},
-                "websites": {
-                    "https://...": {},
-                    "https://....": {}
-                },
-                "keywords": {}
-            },
             "lomonosov": {
                 "vk": {},
                 "tg": {},
                 "websites": {
-                    "https://47news.ru": {
+                    "47news.ru": {
+                        "domain": "https://47news.ru",
+                        "url": "https://47news.ru/articles/",
                         "search": {
-                            "url": "https://47news.ru/articles/",
+                            "descript": "urls",
                             "absolute_path": false,
-                            "root": "https://47news.ru",
                             "premain": {
                                 "teg": "li",
                                 "class": [
@@ -35,8 +27,9 @@
                                 "id": null
                             }
                         },
-                        "read": {
-                            "date": {
+                        "read": [
+                            {
+                                "descript": "date",
                                 "premain": {
                                     "teg": "div",
                                     "class": [
@@ -52,7 +45,8 @@
                                     "id": null
                                 }
                             },
-                            "title": {
+                            {
+                                "descript": "title",
                                 "premain": {
                                     "teg": "div",
                                     "class": [
@@ -66,7 +60,8 @@
                                     "id": null
                                 }
                             },
-                            "text": {
+                            {
+                                "descript": "text",
                                 "premain": {
                                     "teg": "div",
                                     "class": [
@@ -76,8 +71,10 @@
                                 },
                                 "main": null
                             },
-                            "date_format": "%H:%M %d.%m.%Y"
-                        }
+                            {
+                                "date_format": "%H:%M %d.%m.%Y"
+                            }
+                        ]
                     }
                 },
                 "keywords": {
@@ -310,82 +307,6 @@
                         ]
                     }
                 }
-            }
-        }
-    },
-    "kalya": {
-        "bases": {
-            "kpop": {
-                "vk": {},
-                "tg": {},
-                "websites": {
-                    "https://...": {
-                        "search": {
-                            "url": "...",
-                            "absolute_path": false,
-                            "root": "...",
-                            "premain": {
-                                "teg": "li",
-                                "class": [
-                                    "first",
-                                    "item"
-                                ],
-                                "id": null
-                            },
-                            "main": {
-                                "teg": "a",
-                                "class": [
-                                    "title"
-                                ],
-                                "id": null
-                            }
-                        },
-                        "read": {
-                            "date": {
-                                "premain": {
-                                    "teg": "div",
-                                    "class": [
-                                        "article-head"
-                                    ],
-                                    "id": null
-                                },
-                                "main": {
-                                    "teg": "span",
-                                    "class": [
-                                        "cdate"
-                                    ],
-                                    "id": null
-                                }
-                            },
-                            "title": {
-                                "premain": {
-                                    "teg": "div",
-                                    "class": [
-                                        "article-head"
-                                    ],
-                                    "id": null
-                                },
-                                "main": {
-                                    "teg": "h1",
-                                    "class": null,
-                                    "id": null
-                                }
-                            },
-                            "text": {
-                                "premain": {
-                                    "teg": "div",
-                                    "class": [
-                                        "article-text"
-                                    ],
-                                    "id": null
-                                },
-                                "main": null
-                            },
-                            "date_format": "%H:%M %d.%m.%Y"
-                        }
-                    }
-                },
-                "keywords": {}
             }
         }
     }
