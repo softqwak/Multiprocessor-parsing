@@ -1,7 +1,8 @@
-# LOMONOSOV
-parsing
+# Lomonosov
+parsing vk, telegram, web
 
-## PARSER OPTIONS
+## Parser options
+
 ```json
 {
     "set": "number of tasks that will be executed asynchronously",
@@ -11,7 +12,7 @@ parsing
 }
 ```
 
-## PARSER INSTRUCTIONS
+## Parser instruction
 
 ```json
 {
@@ -60,9 +61,31 @@ parsing
                 ],
                 "id": "id"
             },
-            "main": null
+            "main": {
+                "teg": "teg",
+                "classes": [
+                    "class"
+                ],
+                "id": "id"
+            }
         },
-        ...
+        {
+            "descript": "any content",
+            "premain": {
+                "teg": "teg",
+                "classes": [
+                    "class"
+                ],
+                "id": "id"
+            },
+            "main": {
+                "teg": "teg",
+                "classes": [
+                    "class"
+                ],
+                "id": "id"
+            }
+        },
         {
             "descript": "options_read",
             "date_format": "%H:%M %d.%m.%Y"
