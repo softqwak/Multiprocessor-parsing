@@ -2,8 +2,8 @@
 parsing
 
 ## PARSER OPTIONS
-'''python
+```json
     {
         "set": ""
     }
-'''
+```
