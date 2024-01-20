@@ -2,5 +2,5 @@
 parsing
 
 # parser options
-users: [str] - пользователи, которые имеют доступ \n
+users: [str] - пользователи, которые имеют доступ
 set: [int] - 
