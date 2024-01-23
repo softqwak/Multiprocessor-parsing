@@ -66,7 +66,7 @@ class Server(Parser):
             for content_item in content:           
                 print('sending report')
                 print(f'\t{content_item}\n')                
-                self.send_report(socket=socket, code=reports['code'], report=report)
+                self.send_report(socket=socket, code=content_item['code'], report=content_item)
                 print('send report') 
 
         is_connect = True
