@@ -1,6 +1,6 @@
 
 from socket import *
-from codes import *
+from config import *
 import json
 
 class Client:
@@ -15,7 +15,8 @@ class Client:
         
     def connect(self):
         try:
-            print('connect')
+            print('connecting')
+            print(f'{self.connect_to}')
             self.socket.connect(self.connect_to)
             try:
                 self.get_report()
@@ -25,12 +26,11 @@ class Client:
             if len(self.report) > 0:
                 print(self.report)
                 if self.report['code'] == SUCC_CONNECT:
-                    return True
-            
+                    return True            
         except ConnectionRefusedError:
-            print('server off')
+            return False
         
-        return False
+        
             
 
     def get_report(self):

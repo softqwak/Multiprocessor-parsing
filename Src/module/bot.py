@@ -3,18 +3,19 @@ import telebot
 from telebot import types
 import json
 from datetime import datetime
-from codes import *
+from config import *
 from client import Client
 from threading import Thread
+from time import sleep
 
 class Bot(Client):
     
     def load(self, path) -> dict:
-        with open(path, 'r') as file:
+        with open(path, 'r', encoding='utf-8') as file:
             return json.load(file)
     
     def save(self, obj, path):
-        with open(path, 'w') as file:
+        with open(path, 'w', encoding='utf-8') as file:
             json.dump(obj, file)
     
     def now(self): return f'[{datetime.now()}]'
@@ -29,17 +30,21 @@ class Bot(Client):
         self.answers = self.load(self.PATH_ANSWERS)
         self.token = self.options['token']
         
-        self.getting_traffic = Thread(target=self.server_connect, args=(("192.168.1.161",30825),), daemon=True)
+        self.getting_traffic = Thread(target=self.server_connect, args=(("127.0.0.1",30825),), daemon=True)
         self.thread_run = Thread(target=self.run, args=())
         self.getting_traffic.start()
         self.thread_run.start()
 
     def server_connect(self, connect_to):
-        super().__init__(connect_to)
-        is_connect = self.connect()
-        if is_connect:
+        while True:
+            super().__init__(connect_to)
+            is_connect = self.connect()
+            while not is_connect:
+                is_connect = self.connect()
+                sleep(0.1)
+
             print('server connect')
-            while True:
+            while is_connect:
                 try:
                     print("getting report")
                     self.get_report()
@@ -47,7 +52,13 @@ class Bot(Client):
                     print("get report")
                 except Exception as e:
                     report = ''
+                    print(e.args)
                     print(str(e))
+                    if e.args[0] == 10054:
+                        print('надо бы закрыть сокет и заново ждать подключение', end='')
+                        self.socket.close()
+                        is_connect = False
+                        break
                 
                 if len(self.report) > 0:
                     print(f'client.report = {self.report}')

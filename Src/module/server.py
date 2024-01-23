@@ -1,7 +1,7 @@
 
 from socket import *
 from datetime import datetime
-from codes import *
+from config import *
 from threading import Thread
 from parsers import Parser
 import json
@@ -41,7 +41,6 @@ class Server(Parser):
     
     def send_report(self, socket, code, report=None,err=None):        
         if report is None:
-            print('reportnone')
             report = {
                 'code': code,
                 'created': self.now(),
@@ -61,12 +60,12 @@ class Server(Parser):
 
         def parsing() -> dict:
             parser = Parser()
-            reports = parser.start()
+            content = parser.start()
             
-            print(f'{socket}\n{reports}\n')
-            for report in reports['reports']:           
+            print(f'{socket}\n{content}\n')
+            for content_item in content:           
                 print('sending report')
-                print(f'\t{report}\n')                
+                print(f'\t{content_item}\n')                
                 self.send_report(socket=socket, code=reports['code'], report=report)
                 print('send report') 
 
@@ -83,6 +82,6 @@ class Server(Parser):
 
 if __name__ == "__main__":
     Server(
-        "192.168.1.161", 
+        "127.0.0.1", 
         30825
     ).start()
