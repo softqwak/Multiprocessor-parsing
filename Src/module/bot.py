@@ -34,20 +34,21 @@ class Bot(Client):
         
         self.getting_traffic = Thread(target=self.server_connect, args=(("127.0.0.1",30825),), daemon=True)
         self.thread_run = Thread(target=self.run, args=(), daemon=True)
-        self.thread_exit = Thread(target=self.exit_key, args=(), daemon=True)
+        # self.thread_exit = Thread(target=self.exit_key, args=(), daemon=True)
         self.getting_traffic.start()
         self.thread_run.start()
-        self.thread_exit.start()
-
+        # self.thread_exit.start()
+        self.getting_traffic.join()
+        self.thread_run.join()
     def exit_key(self):
         print('exit_key')
         while True and self.is_run:
             recorded = keyboard.record(until='esc')
             recorded = recorded[::2]
             print(recorded)
-            
+
     def server_connect(self, connect_to):
-        while True and self.is_run:
+        while True:
             super().__init__(connect_to)
             is_connect = self.connect()
             while not is_connect:
@@ -55,7 +56,7 @@ class Bot(Client):
                 time.sleep(0.1)
 
             print('server connect')
-            while is_connect and self.is_run:
+            while is_connect:
                 try:
                     print("getting report")
                     self.get_report()
