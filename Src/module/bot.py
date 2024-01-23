@@ -7,7 +7,7 @@ from config import *
 from client import Client
 from threading import Thread
 import time
-import keyboard
+from keybind import KeyBinder
 
 class Bot(Client):
     
@@ -31,24 +31,27 @@ class Bot(Client):
         self.answers = self.load(self.PATH_ANSWERS)
         self.token = self.options['token']
         self.is_run = True
-        
+
+        # TODO: ошибка с дисплеем, возможно работает на винде
+        KeyBinder.activate({
+            'Ctrl-K': self.exit_command,
+        },
+        run_thread=True )
+
         self.getting_traffic = Thread(target=self.server_connect, args=(("127.0.0.1",30825),), daemon=True)
         self.thread_run = Thread(target=self.run, args=(), daemon=True)
-        # self.thread_exit = Thread(target=self.exit_key, args=(), daemon=True)
         self.getting_traffic.start()
         self.thread_run.start()
-        # self.thread_exit.start()
         self.getting_traffic.join()
         self.thread_run.join()
-    def exit_key(self):
-        print('exit_key')
-        while True and self.is_run:
-            recorded = keyboard.record(until='esc')
-            recorded = recorded[::2]
-            print(recorded)
+    
+    @staticmethod
+    def exit_command(self):
+        self.is_run = False
+    
 
     def server_connect(self, connect_to):
-        while True:
+        while True and self.is_run:
             super().__init__(connect_to)
             is_connect = self.connect()
             while not is_connect:
@@ -56,7 +59,7 @@ class Bot(Client):
                 time.sleep(0.1)
 
             print('server connect')
-            while is_connect:
+            while is_connect and self.is_run:
                 try:
                     print("getting report")
                     self.get_report()
