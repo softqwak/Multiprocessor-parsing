@@ -1,1 +1,3 @@
 Src/module/__pycache__
+*.pyd
+*.pyc
