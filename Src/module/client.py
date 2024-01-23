@@ -6,7 +6,7 @@ import json
 class Client:
     
     def __init__(self, connect_to):
-        print('init')
+        print('client init')
 
         self.connect_to = connect_to
         self.socket = socket(AF_INET, SOCK_STREAM)

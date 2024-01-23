@@ -6,7 +6,8 @@ from datetime import datetime
 from config import *
 from client import Client
 from threading import Thread
-from time import sleep
+import time
+import keyboard
 
 class Bot(Client):
     
@@ -29,22 +30,32 @@ class Bot(Client):
         self.users = self.load(self.PATH_USERS)['users']
         self.answers = self.load(self.PATH_ANSWERS)
         self.token = self.options['token']
+        self.is_run = True
         
         self.getting_traffic = Thread(target=self.server_connect, args=(("127.0.0.1",30825),), daemon=True)
-        self.thread_run = Thread(target=self.run, args=())
+        self.thread_run = Thread(target=self.run, args=(), daemon=True)
+        self.thread_exit = Thread(target=self.exit_key, args=(), daemon=True)
         self.getting_traffic.start()
         self.thread_run.start()
+        self.thread_exit.start()
 
+    def exit_key(self):
+        print('exit_key')
+        while True and self.is_run:
+            recorded = keyboard.record(until='esc')
+            recorded = recorded[::2]
+            print(recorded)
+            
     def server_connect(self, connect_to):
-        while True:
+        while True and self.is_run:
             super().__init__(connect_to)
             is_connect = self.connect()
             while not is_connect:
                 is_connect = self.connect()
-                sleep(0.1)
+                time.sleep(0.1)
 
             print('server connect')
-            while is_connect:
+            while is_connect and self.is_run:
                 try:
                     print("getting report")
                     self.get_report()
