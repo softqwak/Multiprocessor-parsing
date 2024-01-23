@@ -18,7 +18,7 @@ class Server(Parser):
             (self.host, self.port)
         )
         self.server.listen(1)
-        
+        print(self.server)
 
     def start(self):
         print('server start')
