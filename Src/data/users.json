@@ -1,1 +1,68 @@
-{"users": [{"id": "662532835", "auth": true, "accesscode": "3008", "state": "0003", "settings": {"parser": "parser#1", "db": "lomonosov", "websites": ["47news", "baltluch", "..."], "descript": "\u041d\u043e\u0432\u043e\u0441\u0442\u0438 \u041b\u043e\u043c\u043e\u043d\u043e\u0441\u043e\u0432\u0441\u043a\u043e\u0433\u043e \u0420\u0430\u0439\u043e\u043d\u0430"}}, {"id": "415873528", "auth": true, "accesscode": "\u041f\u041e\u0428\u0415\u041b\u041d\u0410\u0425\u0423\u0419", "state": "0005", "settings": {"parser": "parser#1", "db": "lomonosov", "websites": ["47news", "baltluch", "..."], "descript": "\u041d\u043e\u0432\u043e\u0441\u0442\u0438 \u041b\u043e\u043c\u043e\u043d\u043e\u0441\u043e\u0432\u0441\u043a\u043e\u0433\u043e \u0420\u0430\u0439\u043e\u043d\u0430"}}, {"id": "6165580546", "auth": true, "accesscode": "8888", "state": "0005", "settings": {"parser": "parser#1", "db": "lomonosov", "websites": ["47news", "baltluch", "..."], "descript": "\u041d\u043e\u0432\u043e\u0441\u0442\u0438 \u041b\u043e\u043c\u043e\u043d\u043e\u0441\u043e\u0432\u0441\u043a\u043e\u0433\u043e \u0420\u0430\u0439\u043e\u043d\u0430"}}, {"id": "942888671", "auth": true, "accesscode": "1234", "state": "0005", "settings": {"parser": "parser#1", "db": "lomonosov", "websites": ["47news", "baltluch", "..."], "descript": "\u041d\u043e\u0432\u043e\u0441\u0442\u0438 \u041b\u043e\u043c\u043e\u043d\u043e\u0441\u043e\u0432\u0441\u043a\u043e\u0433\u043e \u0420\u0430\u0439\u043e\u043d\u0430"}}]}
+{
+    "users": [
+        {
+            "id": "662532835",
+            "auth": true,
+            "accesscode": "3008",
+            "state": "0005",
+            "settings": {
+                "parser": "parser#1",
+                "db": "lomonosov",
+                "websites": [
+                    "47news",
+                    "baltluch",
+                    "..."
+                ],
+                "descript": "\u041d\u043e\u0432\u043e\u0441\u0442\u0438 \u041b\u043e\u043c\u043e\u043d\u043e\u0441\u043e\u0432\u0441\u043a\u043e\u0433\u043e \u0420\u0430\u0439\u043e\u043d\u0430"
+            }
+        },
+        {
+            "id": "415873528",
+            "auth": true,
+            "accesscode": "\u041f\u041e\u0428\u0415\u041b\u041d\u0410\u0425\u0423\u0419",
+            "state": "0003",
+            "settings": {
+                "parser": "parser#1",
+                "db": "lomonosov",
+                "websites": [
+                    "47news",
+                    "baltluch",
+                    "..."
+                ],
+                "descript": "\u041d\u043e\u0432\u043e\u0441\u0442\u0438 \u041b\u043e\u043c\u043e\u043d\u043e\u0441\u043e\u0432\u0441\u043a\u043e\u0433\u043e \u0420\u0430\u0439\u043e\u043d\u0430"
+            }
+        },
+        {
+            "id": "6165580546",
+            "auth": true,
+            "accesscode": "8888",
+            "state": "0003",
+            "settings": {
+                "parser": "parser#1",
+                "db": "lomonosov",
+                "websites": [
+                    "47news",
+                    "baltluch",
+                    "..."
+                ],
+                "descript": "\u041d\u043e\u0432\u043e\u0441\u0442\u0438 \u041b\u043e\u043c\u043e\u043d\u043e\u0441\u043e\u0432\u0441\u043a\u043e\u0433\u043e \u0420\u0430\u0439\u043e\u043d\u0430"
+            }
+        },
+        {
+            "id": "942888671",
+            "auth": true,
+            "accesscode": "1234",
+            "state": "0003",
+            "settings": {
+                "parser": "parser#1",
+                "db": "lomonosov",
+                "websites": [
+                    "47news",
+                    "baltluch",
+                    "..."
+                ],
+                "descript": "\u041d\u043e\u0432\u043e\u0441\u0442\u0438 \u041b\u043e\u043c\u043e\u043d\u043e\u0441\u043e\u0432\u0441\u043a\u043e\u0433\u043e \u0420\u0430\u0439\u043e\u043d\u0430"
+            }
+        }
+    ]
+}

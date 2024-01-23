@@ -33,10 +33,10 @@ class Bot(Client):
         self.is_run = True
 
         # TODO: ошибка с дисплеем, возможно работает на винде
-        KeyBinder.activate({
-            'Ctrl-K': self.exit_command,
-        },
-        run_thread=True )
+        # KeyBinder.activate({
+        #     'Ctrl-K': self.exit_command,
+        # },
+        # run_thread=True )
 
         self.getting_traffic = Thread(target=self.server_connect, args=(("127.0.0.1",30825),), daemon=True)
         self.thread_run = Thread(target=self.run, args=(), daemon=True)
@@ -56,7 +56,7 @@ class Bot(Client):
             is_connect = self.connect()
             while not is_connect:
                 is_connect = self.connect()
-                time.sleep(0.1)
+                time.sleep(1)
 
             print('server connect')
             while is_connect and self.is_run:
@@ -83,7 +83,7 @@ class Bot(Client):
                             if user['state'] == TRAFFIC_ON:
                                 print(f'user:{user} get !!!!')
                                 text = ''
-                                for line in self.report['content']:
+                                for line in self.report['content']['msg']:
                                     text += line
                                 self.send_message(int(user['id']), text)
                 

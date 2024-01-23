@@ -5,6 +5,7 @@ from config import *
 from threading import Thread
 from parsers import Parser
 import json
+import copy
 
 class Server(Parser):
 
@@ -27,7 +28,6 @@ class Server(Parser):
                 self.client, self.addr_client = self.server.accept()
                 print('client connect')
                 self.send_report(socket=self.client, code=SUCC_CONNECT)
-                self.get_request(socket=self.socket)
                 Thread(
                     target=self.keeping_connect, 
                     args=(self.client,),
@@ -57,22 +57,19 @@ class Server(Parser):
         self.request = json.loads(socket.recv(1024).decode(CODE))
         
     def keeping_connect(self, socket):
-
-        def parsing() -> dict:
-            parser = Parser()
-            content = parser.start()
-            
-            print(f'{socket}\n{content}\n')
-            for content_item in content:           
-                print('sending report')
-                print(f'\t{content_item}\n')                
-                self.send_report(socket=socket, code=content_item['code'], report=content_item)
-                print('send report') 
-
         is_connect = True
+        super().__init__()
+        print(self.parsing_report)
         while is_connect:
-            parsing()
-                
+            for resource in self.parsing_report:     
+                report = copy.deepcopy(self.parsing_report[resource])
+                if report:      
+                    print('sending report')
+                    print(f'\t{report}\n')                
+                    self.send_report(socket=socket, code=report['code'], report=report)
+                    print('send report') 
+                    self.parsing_report[resource] = {}
+                    
         socket.close()
 
 
